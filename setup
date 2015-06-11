@@ -1,0 +1,75 @@
+# opencart-Tree-Menu
+
+
+=================================================
+=					FOLDERS 					=
+=================================================	  
+
+1-copy folders	  
+
+      
+	  
+=================================================
+=					MAIN MENU  					=
+=================================================	  
+	  
+
+2 -Add \admin\language\english\common\menu.php
+	$_['text_category_tree']    = 'Category Tree';	  
+
+	[opsiyon]
+	Add \admin\language\turkish\common\menu.php
+	$_['text_category_tree']    = 'Kategori Ağacı';	  
+
+
+	
+3- file---->  admin\view\template\common\menu.tpl
+
+<code><li><a href="<\?php echo $category; ?>"><?php echo $text_category; ?></a></li></code>
+
+"(add)-----------> <li><a href="<\?php echo $category_tree; ?>"><?php echo $text_category_tree; ?></a></li>"  
+	
+"<li><a href="<?php echo $product; ?>"><?php echo $text_product; ?></a></li>"
+
+--------------------------------
+
+
+4- admin\controller\common\menu.php
+
+$data['text_category_tree'] = $this->language->get('text_category_tree');
+$data['category_tree'] = $this->url->link('catalog/category_tree', 'token=' . $this->session->data['token'], 'SSL');    
+		
+
+=================================================
+=						CSS  					=
+=================================================	
+
+5- admin\view\template\stylesheet.css
+
+
+.categoryTreeToggle
+	  {
+    text-align: center;
+    font-weight: bold;
+    line-height: 20px;
+    width:20px;
+    height:20px;
+    border-radius:10px;
+    background-color:#373737;
+    color:#fff;
+    clear:both;
+    float:left;
+    margin-right: 5px;
+    cursor: pointer;
+    }
+    
+.table-responsive ul 
+	  {
+    list-style-type:none;
+    }
+    
+.table-responsive li 
+	  {
+    height:25px;
+    padding: 3px;
+    }
